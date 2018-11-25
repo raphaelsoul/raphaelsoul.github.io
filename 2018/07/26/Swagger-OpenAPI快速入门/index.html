@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source"/>
+
+
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://www.google-analytics.com"/>
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.proxy.ustclug.org"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Swagger/OpenAPI快速入门 | 
+        
+        Raphaelsoul
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="#303F9F">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","//cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/material.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","//cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/style.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #FF5252;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #3F51B5 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #3F51B5 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #3F51B5 !important;
+  }
+
+  .toTop {
+    background: #FF5252 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #FF5252;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #FF5252;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #FF5252;
+  }
+
+  .post-toc a:hover {
+    color: #FF5252;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #C5CAE9;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.proxy.ustclug.org/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","//cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/material-icons.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","//cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/jquery.min.js", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Raphaelsoul">
+    <meta name="msapplication-starturl" content="https://raphaelsoul.github.io/2018/07/26/Swagger-OpenAPI快速入门/">
+    <meta name="msapplication-navbutton-color" content="#303F9F">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Raphaelsoul">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://raphaelsoul.github.io/2018/07/26/Swagger-OpenAPI快速入门/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Swagger/OpenAPI快速入门 | Raphaelsoul">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="">
+    
+
+    
+        <meta property="article:published_time" content="Thu Jul 26 2018 13:39:24 GMT+0800">
+        <meta property="article:modified_time" content="Sun Nov 25 2018 19:10:00 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="https://raphaelsoul.github.io/2018/07/26/Swagger-OpenAPI快速入门/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://raphaelsoul.github.io/2018/07/26/Swagger-OpenAPI快速入门/index.html",
+    "headline": "Swagger/OpenAPI快速入门",
+    "datePublished": "Thu Jul 26 2018 13:39:24 GMT+0800",
+    "dateModified": "Sun Nov 25 2018 19:10:00 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "raphaelsoul",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//tvax1.sinaimg.cn/crop.0.0.996.996.180/7f003291ly8ft986rusppj20ro0rojuf.jpg"
+        },
+        "description": "El psy congroo"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Raphaelsoul",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": "",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+        <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-127711362-1', 'auto');ga('send', 'pageview');
+</script>
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#工具"><span class="post-toc-number">2.</span> <span class="post-toc-text">工具</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#IDE-编辑器集成"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">IDE/编辑器集成</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自动化集成"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">自动化集成</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#结构简介"><span class="post-toc-number">3.</span> <span class="post-toc-text">结构简介</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Pure Thumbnail -->
+            <div class="post_thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#3F51B5 !important">
+        
+    
+            <p class="article-headline-p">
+                Swagger/OpenAPI快速入门
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="//tvax1.sinaimg.cn/crop.0.0.996.996.180/7f003291ly8ft986rusppj20ro0rojuf.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>raphaelsoul</strong>
+        <span>7月 26, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Swagger/OpenAPI快速入门&url=https://raphaelsoul.github.io/2018/07/26/Swagger-OpenAPI快速入门/index.html&pic=https://raphaelsoul.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Swagger/OpenAPI快速入门&url=https://raphaelsoul.github.io/2018/07/26/Swagger-OpenAPI快速入门/index.html&via=raphaelsoul" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=https://raphaelsoul.github.io/2018/07/26/Swagger-OpenAPI快速入门/index.html&text=Swagger/OpenAPI快速入门" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Swagger是一款开源的api文档书写工具， 要求编写者按照一定的语法规范来描述一个API的所有接口，包括请求方法、请求路径、请求头、 cookie、等等一切内容</p>
+<p>目前常见的版本为2.0, 同时， 升级到3.0后， 语法结构发生了比较大的改变，并且重命名为<code>openapi</code>。 本文以<code>openapi</code>的标准来介绍swagger的用法。因为目前<a href="https://swagger.io/tools/swaggerhub/" target="_blank" rel="noopener">SwaggerHub</a>、<a href="https://editor.swagger.io/" target="_blank" rel="noopener">SwaggerEditor</a><br>以及<a href="https://swagger.io/docs/specification/" target="_blank" rel="noopener">Swagger Specification</a>使用的都是<code>openapi 3.0.1</code>的规范。</p>
+<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><h4 id="IDE-编辑器集成"><a href="#IDE-编辑器集成" class="headerlink" title="IDE/编辑器集成"></a>IDE/编辑器集成</h4><p>我们可以使用多种工具来编写swagger文档，一般书写都是<code>.yaml</code>格式， 我们可以转换成<code>.json</code>格式来是自动化方案和文档生成工具能够更方便地处理其中的数据。</p>
+<ol>
+<li><p>官方提供的在线的<a href="https://editor.swagger.io/" target="_blank" rel="noopener">SwaggerEditor</a></p>
+<blockquote>
+<p>注意 <a href="https://editor.swagger.io/" target="_blank" rel="noopener">SwaggerEditor</a>的语法检查规范是openapi v3的规范， 如果需要编写swagger v2规范的接口描述，可以使用<a href="https://editor2.swagger.io/" target="_blank" rel="noopener">SwaggerEditor2</a></p>
+</blockquote>
+</li>
+<li><p><a href="https://github.com/zalando/intellij-swagger" target="_blank" rel="noopener">Swagger Plugin for IntelliJ</a><br>可以直接在JetBrains全系列的IDE的插件管理中直接搜索<code>Swagger Plugin</code>安装， 主要提供了swagger/openapi的语法自动补全。</p>
+</li>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=mermade.openapi-lint" target="_blank" rel="noopener">openapi-lint for VSCode</a><br>直接在VSCode中安装。提供了代码自动补全和lint功能，语法错误的地方会在控制台的<code>Problem</code>标签页中警告</p>
+</li>
+</ol>
+<h4 id="自动化集成"><a href="#自动化集成" class="headerlink" title="自动化集成"></a>自动化集成</h4><p>同时我们可以通过各种语言/平台的开源工具集成，通过自动化测试和自动化部署，测试接口，并部署静态文档。具体参考<a href="https://swagger.io/tools/open-source/open-source-integrations/" target="_blank" rel="noopener">这里</a>选择你需要的集成类库。</p>
+<h3 id="结构简介"><a href="#结构简介" class="headerlink" title="结构简介"></a>结构简介</h3><p>一个最简单的结构<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">openapi:</span> <span class="string">"3.0.0"</span></span><br><span class="line"><span class="attr">info:</span></span><br><span class="line"><span class="attr">  version:</span> <span class="string">"1.0.0"</span></span><br><span class="line"><span class="attr">  title:</span> <span class="string">"Some Awesome API"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">paths:</span></span><br><span class="line">  <span class="string">"/auth/login"</span><span class="string">:</span></span><br><span class="line"><span class="attr">    post:</span></span><br><span class="line"><span class="attr">      responses:</span></span><br><span class="line">        <span class="number">200</span><span class="string">:</span></span><br><span class="line"><span class="attr">          description:</span> <span class="string">OK</span></span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p><code>info</code> 基本信息</p>
+<blockquote>
+<p>即整个文档的meta信息 都在<code>info</code>节中。除了必要的<code>version</code>、 <code>title</code>之外 还可以有<code>description</code>、 <code>termsOfService</code>等字段</p>
+</blockquote>
+</li>
+<li><p><code>servers</code> 服务端点</p>
+<blockquote>
+<p>用来描述服务器端点(Endpoint), 可以有多个</p>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">servers:</span></span><br><span class="line"><span class="attr">  - url:</span> <span class="attr">http://api.example.com/v1</span></span><br><span class="line"><span class="attr">    description:</span> <span class="string">Optional</span> <span class="string">server</span> <span class="string">description,</span> <span class="string">e.g.</span> <span class="string">Main</span> <span class="string">(production)</span> <span class="string">server</span></span><br><span class="line"><span class="attr">  - url:</span> <span class="attr">http://staging-api.example.com</span></span><br><span class="line"><span class="attr">    description:</span> <span class="string">Optional</span> <span class="string">server</span> <span class="string">description,</span> <span class="string">e.g.</span> <span class="string">Internal</span> <span class="string">staging</span> <span class="string">server</span> <span class="string">for</span> <span class="string">testing</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
+<ol start="3">
+<li><p><code>paths</code> 路由描述</p>
+<blockquote>
+<p>即所有的路由 是我们主要要编写的部分。 以下示例包含了大多数常用的描述</p>
+</blockquote>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">paths:</span></span><br><span class="line">  <span class="string">/users/&#123;userId&#125;:</span></span><br><span class="line"><span class="attr">    get:</span></span><br><span class="line"><span class="attr">      summary:</span> <span class="string">Get</span> <span class="string">a</span> <span class="string">user</span> <span class="string">by</span> <span class="string">ID</span></span><br><span class="line"><span class="attr">      parameters:</span></span><br><span class="line"><span class="attr">      - in:</span> <span class="string">"path"</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">"userId"</span></span><br><span class="line"><span class="attr">        schema:</span></span><br><span class="line"><span class="attr">          type:</span> <span class="string">integer</span></span><br><span class="line"><span class="attr">            default:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">            required:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">            description:</span> <span class="string">user</span> <span class="string">number</span>                  </span><br><span class="line"><span class="attr">      responses:</span></span><br><span class="line">        <span class="string">'200'</span><span class="string">:</span></span><br><span class="line"><span class="attr">          description:</span> <span class="string">A</span> <span class="string">single</span> <span class="string">user.</span></span><br><span class="line"><span class="attr">          content:</span></span><br><span class="line">            <span class="string">application/json:</span></span><br><span class="line"><span class="attr">              schema:</span></span><br><span class="line"><span class="attr">                type:</span> <span class="string">object</span></span><br><span class="line"><span class="attr">                properties:</span></span><br><span class="line"><span class="attr">                  id:</span></span><br><span class="line"><span class="attr">                    type:</span> <span class="string">integer</span></span><br><span class="line"><span class="attr">                  name:</span></span><br><span class="line"><span class="attr">                    type:</span> <span class="string">string</span></span><br><span class="line">                           </span><br><span class="line"><span class="attr">paths:</span></span><br><span class="line">  <span class="string">/users:</span></span><br><span class="line"><span class="attr">    get:</span></span><br><span class="line"><span class="attr">      summary:</span> <span class="string">Get</span> <span class="string">a</span> <span class="string">user</span> <span class="string">by</span> <span class="string">ID</span></span><br><span class="line"><span class="attr">      parameters:</span></span><br><span class="line"><span class="attr">        - in:</span> <span class="string">"query"</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">"page"</span></span><br><span class="line"><span class="attr">          schema:</span></span><br><span class="line"><span class="attr">            type:</span> <span class="string">integer</span></span><br><span class="line"><span class="attr">              default:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">              required:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">              description:</span> <span class="string">page</span> <span class="string">number</span></span><br><span class="line"><span class="attr">        - in:</span> <span class="string">query</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">"pageSize"</span></span><br><span class="line"><span class="attr">          schema:</span></span><br><span class="line"><span class="attr">            type:</span> <span class="string">integer</span></span><br><span class="line"><span class="attr">            default:</span> <span class="number">20</span></span><br><span class="line"><span class="attr">            required:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">            description:</span> <span class="string">page</span> <span class="string">size</span>  </span><br><span class="line"><span class="attr">      responses:</span></span><br><span class="line">        <span class="string">'200'</span><span class="string">:</span></span><br><span class="line"><span class="attr">          description:</span> <span class="string">A</span> <span class="string">single</span> <span class="string">user.</span></span><br><span class="line"><span class="attr">          content:</span></span><br><span class="line">            <span class="string">application/json:</span></span><br><span class="line"><span class="attr">              schema:</span></span><br><span class="line"><span class="attr">                type:</span> <span class="string">object</span></span><br><span class="line"><span class="attr">                properties:</span></span><br><span class="line"><span class="attr">                  id:</span></span><br><span class="line"><span class="attr">                    type:</span> <span class="string">integer</span></span><br><span class="line"><span class="attr">                  name:</span></span><br><span class="line"><span class="attr">                    type:</span> <span class="string">string</span></span><br><span class="line"><span class="attr">    post:</span></span><br><span class="line"><span class="attr">      summary:</span> <span class="string">create</span> <span class="string">a</span> <span class="string">user</span> </span><br><span class="line"><span class="attr">      requestBody:</span></span><br><span class="line"><span class="attr">         content:</span></span><br><span class="line">           <span class="string">application/json:</span></span><br><span class="line"><span class="attr">             schema:</span></span><br><span class="line"><span class="attr">               type:</span> <span class="string">object</span></span><br><span class="line"><span class="attr">               required:</span></span><br><span class="line"><span class="bullet">                 -</span> <span class="string">email</span></span><br><span class="line"><span class="bullet">                 -</span> <span class="string">password</span></span><br><span class="line"><span class="bullet">                 -</span> <span class="string">passwordAgain</span></span><br><span class="line"><span class="attr">               properties:</span></span><br><span class="line"><span class="attr">                 email:</span></span><br><span class="line"><span class="attr">                   type:</span> <span class="string">string</span></span><br><span class="line"><span class="attr">                   format:</span> <span class="string">email</span></span><br><span class="line"><span class="attr">                 password:</span></span><br><span class="line"><span class="attr">                   type:</span> <span class="string">string</span></span><br><span class="line"><span class="attr">                   format:</span> <span class="string">password</span></span><br><span class="line"><span class="attr">                 passwordAgain:</span></span><br><span class="line"><span class="attr">                   type:</span> <span class="string">string</span></span><br><span class="line"><span class="attr">                   format:</span> <span class="string">password</span></span><br><span class="line">                 <span class="comment"># more properties to create a user</span></span><br><span class="line"><span class="attr">      responses:</span></span><br><span class="line">        <span class="string">'200'</span><span class="string">:</span></span><br><span class="line"><span class="attr">          description:</span> <span class="string">A</span> <span class="string">single</span> <span class="string">user.</span></span><br><span class="line"><span class="attr">          content:</span></span><br><span class="line">            <span class="string">application/json:</span></span><br><span class="line"><span class="attr">              schema:</span></span><br><span class="line"><span class="attr">                type:</span> <span class="string">object</span></span><br><span class="line"><span class="attr">                properties:</span></span><br><span class="line"><span class="attr">                  id:</span></span><br><span class="line"><span class="attr">                    type:</span> <span class="string">integer</span></span><br><span class="line"><span class="attr">                  name:</span></span><br><span class="line"><span class="attr">                    type:</span> <span class="string">string</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>components</code> 可重用组件</p>
+<blockquote>
+<p>组件 主要是用来通过<code>$ref</code>来重用的描述. 使用方式<code>$ref: &#39;#/components/{type}/{Name}&#39;</code></p>
+</blockquote>
+<p> 3.1 <code>schemas</code> 可重用的数据模型<br> 3.2 <code>parameters</code> 可重用的参数描述<br> 3.3 <code>securitySchemes</code> 可重用的鉴权方式<br> 3.4 <code>requestBodies</code> 可重用的请求body<br> 3.5 <code>responses</code> 可重用的响应<br> 3.6 <code>headers</code> 可重用的头部声明<br> 3.7 <code>examples</code> 可重用的示例<br> 3.8 <code>links</code> 可重用的链接<br> 3.9 <code>callbacks</code> 可重用的回调    </p>
+</li>
+</ol>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: '4b8a0857072a2ae1d0d4',
+            clientSecret: '4bf21d11a41270941912990805165b4d665fd8d5',
+            repo: 'raphaelsoul.github.io',
+            owner: 'raphaelsoul',
+            admin: ['raphaelsoul'],
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+   gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/07/27/gitlab-all-in-one/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/WechatIMG4.jpeg);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="//tvax1.sinaimg.cn/crop.0.0.996.996.180/7f003291ly8ft986rusppj20ro0rojuf.jpg" alt="raphaelsoul's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        raphaelsoul@163.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/10/">十月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about-me" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;Raphaelsoul
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","//cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/lazyload.min.js", true)</script>
+
+
+
+    <script>lsloader.load("js_js","//cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/js.min.js", true)</script>
+
+
+
+    <script>lsloader.load("np_js","//cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/nprogress.js", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+   <!-- GitTalk -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 0000;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
