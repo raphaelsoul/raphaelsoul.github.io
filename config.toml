@@ -1,0 +1,5 @@
+baseURL = 'https://raphaelsoul.github.io/'
+languageCode = 'zh-cn'
+title = 'Yet another blog'
+theme = "PaperMod"
+lastmod = true
